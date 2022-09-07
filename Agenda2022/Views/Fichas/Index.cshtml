@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Agenda2022.Models.Ficha>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index Ficha</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Programa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Programa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.FichaId }, new {@class="btn btn-primary"}) 
+            @Html.ActionLink("Details", "Details", new { id=item.FichaId }, new {@class= "btn btn-warning"}) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.FichaId },  new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

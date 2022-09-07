@@ -1,0 +1,64 @@
+﻿@model Agenda2022.Models.Ficha
+
+@{
+    ViewBag.Title = "Delete Ficha";
+}
+
+<h2>Delete Ficha</h2>
+
+@if (ViewBag.Error == null)
+{
+    <h3 class="text-danger">Esta seguro de eliminar este registro?</h3>
+}
+else
+{
+     <h3 class="text-danger">@ViewBag.Error</h3>
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Programa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

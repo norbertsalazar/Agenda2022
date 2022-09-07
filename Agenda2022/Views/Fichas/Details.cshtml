@@ -1,0 +1,89 @@
+﻿@model Agenda2022.Models.FichaDetailsView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h3 class="text-danger">@ViewBag.Error</h3>
+
+<div>
+    <h4>Detalles de la Ficha</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FichaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FichaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Programa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FichaId }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Add-Instructor", "AddInstructor", new { fichaId = Model.FichaId }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+</p>
+<h3>Instructores</h3>
+@if (Model.FichaInstructors.Count == 0)
+            {
+                <h3 class="text-danger">No hay instructores vinculados a la ficha</h3>
+}
+else
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => Model.FichaInstructors[0].instructor.Documento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Model.FichaInstructors[0].instructor.FullName)
+                        </th>
+                    </tr>
+
+                    @for (int i=0; i< Model.FichaInstructors.Count; i++)
+                    {
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => Model.FichaInstructors[i].instructor.Documento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => Model.FichaInstructors[i].instructor.FullName)
+                            </th>
+                        </tr>
+                    }
+                </table>
+            }
